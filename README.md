@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Playmat Builder Frontend
 
 This is the frontend for the Playmat Builder app, built using React and Tailwind CSS. It allows users to upload an image, apply an overlay, preview the final playmat, and download or purchase the generated design.
