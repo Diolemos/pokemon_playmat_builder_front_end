@@ -37,7 +37,7 @@ function App() {
     formData.append("file", image);
     formData.append("overlay", overlay);
     
-    fetch("http://127.0.0.1:8000/upload/", {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/upload/`, {
       method: "POST",
       body: formData,
     })
