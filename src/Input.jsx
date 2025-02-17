@@ -1,4 +1,4 @@
-export default function Input(onImageUpload, onGenerate, onSelectOverlay){
+export default function Input({onImageUpload, onGenerate, onSelectOverlay, overlay}){
 
 
 
@@ -28,7 +28,7 @@ export default function Input(onImageUpload, onGenerate, onSelectOverlay){
     
           {/* Overlay Selector */}
           <select 
-            
+            value={overlay}
             onChange={(e) => onSelectOverlay(e.target.value)} 
             className="border  border-gray-300 rounded-md cursor-pointer p-2 my-2"
           >
@@ -38,7 +38,7 @@ export default function Input(onImageUpload, onGenerate, onSelectOverlay){
     
           {/* Generate Button */}
           <button 
-            className="cursor-pointer bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition"
+            className="cursor-pointer my-3 bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition"
             onClick={onGenerate}
           >
             Generate
