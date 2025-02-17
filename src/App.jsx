@@ -2,6 +2,11 @@ import Input from "./Input"
 
 function App() {
   const [image, setImage] = useState(null);
+  const [overlay, setOverlay] = useState("");
+
+  const handleSelectOverlay = (userChoice)=>{
+      setOverlay(userChoice)
+  }
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -12,7 +17,7 @@ function App() {
   
   return (
     <>
-     <Input onImageUpload={handleImageUpload} overlay onGenerate onSelectOverlay/> 
+     <Input onImageUpload={handleImageUpload}  onGenerate onSelectOverlay={handleSelectOverlay}/> 
     </>
   )
 }
