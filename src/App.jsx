@@ -1,8 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Input from "./Input"
 import Output from "./Output";
 
 function App() {
+
+  useEffect(() => {
+    // Clear preview on reload
+    sessionStorage.removeItem("playmatPreview");
+    setPreview(null);
+  }, []);
+
+
   const [image, setImage] = useState(null);
   const [overlay, setOverlay] = useState("black");
   const [preview, setPreview] = useState(sessionStorage.getItem("playmatPreview"));
