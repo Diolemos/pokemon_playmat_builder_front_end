@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Input from "./Input"
 import Output from "./Output";
-import loadingGif from "./assets/loading.gif";
+
 function App() {
   const [isLoading, setIsLoading] = useState(false);
 
