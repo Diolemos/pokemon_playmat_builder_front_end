@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import Input from "./Input"
 import Output from "./Output";
-
+import loadingGif from "./assets/loading.gif";
 function App() {
+  const [isLoading, setIsLoading] = useState(false);
+
 
   useEffect(() => {
     // Clear preview on reload
@@ -24,11 +26,13 @@ function App() {
     if (!file) return;
     setImage(file);
   };
+ 
   const handleGenerate = () => {
     if (!image) {
         console.error("No image selected");
         return;
     }
+    setIsLoading(true);
     
     console.log("Sending request with image:", image);
     console.log("Selected overlay:", overlay);
@@ -40,6 +44,7 @@ function App() {
     fetch(`${import.meta.env.VITE_BACKEND_URL}/upload/`, {
       method: "POST",
       body: formData,
+      mode: "cors",
     })
     .then((res) => {
         console.log("Response received:", res);
@@ -51,7 +56,8 @@ function App() {
         sessionStorage.setItem("playmatPreview", url);
         console.log("Preview updated:", url);
     })
-    .catch((err) => console.error("Error uploading image:", err));
+    .catch((err) => console.error("Error uploading image:", err))
+    .finally(() => setIsLoading(false)); 
 };
   const handleDownload = () => {
     if (!preview) return;
@@ -66,6 +72,15 @@ function App() {
   
   return (
     <>
+    {isLoading && (
+      <div className="loader fixed inset-0 flex flex-row items-center justify-center bg-[#222222b9]  z-50 text-center text-white">
+  <span className="element"></span>
+  <span className="element "></span>
+  <span className="element"></span>
+
+</div>
+)}
+
      <Input onImageUpload={handleImageUpload} overlay={overlay}  onGenerate={handleGenerate} onSelectOverlay={handleSelectOverlay}/> 
     {/* display preview */}
     <Output preview={preview} onDownload={handleDownload} />

@@ -6,10 +6,10 @@ export default function Output({preview,onDownload}){
  {preview && <img src={preview} alt="Playmat Preview" className="w-full max-w-[500px] border" />}
       {preview && (
         <div className=" my-4 flex space-x-4">
-          <button className="bg-blue-500 text-white px-4 py-2" onClick={onDownload}>
+          <button className="bg-blue-500 cursor-pointer text-white px-4 py-2" onClick={onDownload}>
             Download
           </button>
-          <button className="bg-green-500 text-white px-4 py-2">Order</button>
+          <button className="bg-green-500 cursor-pointer text-white px-4 py-2">Order</button>
         </div>
       )}
 
